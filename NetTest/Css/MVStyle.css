@@ -1,0 +1,25 @@
+﻿.div1 {
+    background-color: red;
+    width: 800px;
+    height: 100%;
+}
+
+#ListPersonen {
+    float: right;
+}
+
+
+.Fright {
+    float: right;
+}
+
+.Fleft {
+    float: left;
+}
+
+H3 {
+    font-size: 20px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
