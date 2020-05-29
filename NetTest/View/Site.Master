@@ -8,14 +8,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mannschaftsverwaltung</title>
-    <link href="~/Css/MVStyle.css" rel="stylesheet" type="text/css" />
+   <link href="~/Css/MVStyle.css" rel="stylesheet" type="text/css" media="screen" runat="server"/> 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/Css/MVStyle.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form runat="server">

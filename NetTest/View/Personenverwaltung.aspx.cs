@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NetTest.View
@@ -23,7 +21,6 @@ namespace NetTest.View
                 this.Response.Redirect(@"~\Default.aspx");
             }
         }
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -330,7 +327,7 @@ namespace NetTest.View
             TableTrainer.BorderStyle = BorderStyle.Solid;
             TableTrainer.CellPadding = 50;
 
-            for (int index = 0; index < FussballCount;index++)
+            for (int index = 0; index < FussballCount; index++)
             {
                 Row = new TableRow();
                 for (int index1 = 0; index1 < 8; index1++)
@@ -403,7 +400,7 @@ namespace NetTest.View
 
         public void TabellenAktualisieren()
         {
-            
+
             int FussballCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Fussballspieler").Count();
             int HandballCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Handballspieler").Count();
             int TennisCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Tennisspieler").Count();
@@ -419,7 +416,7 @@ namespace NetTest.View
             string string3 = "";
             List<Person> Listx = new List<Person>();
 
-            for (int i1 = 0;i1 < FussballCount; i1++)
+            for (int i1 = 0; i1 < FussballCount; i1++)
             {
                 Listx = Verwalter.Personen.Where(o => o.GetPosition() == "Fussballspieler").ToList();
                 Listx[i1].GetPersonData(ref ID, ref Name, ref vorname, ref Geburtsdatum, ref string1, ref string2, ref string3);
@@ -659,7 +656,7 @@ namespace NetTest.View
             BtnOK.Visible = true;
             int CellsCount = varTable.Rows[Zeile].Cells.Count;
             varTable.Rows[Zeile + 1].Cells.Clear();
-            for(int index = 0; index < 6; index++)
+            for (int index = 0; index < 6; index++)
             {
                 varTable.Rows[Zeile + 1].Cells.Add(new TableCell());
             }
@@ -739,7 +736,7 @@ namespace NetTest.View
             Del.BorderWidth = 0;
             Del.BorderColor = System.Drawing.Color.Black;
             Del.UseSubmitBehavior = false;
-            
+
 
             return Del;
         }
