@@ -56,7 +56,7 @@ namespace NetTest
             Liste2[1].Personen.Add(Liste[2]);
             Liste2[1].Personen.Add(Liste[7]);
             this.Mannschaften = Liste2;
-            SQLconnection();
+            //SQLconnection();
         }
 
         public void SQLconnection()

@@ -149,9 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\MVStyle.css" />
-    <Content Include="View\About.aspx" />
     <Content Include="View\Personenverwaltung.aspx" />
-    <Content Include="View\Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -201,7 +199,6 @@
     <Content Include="View\Mannschaftsverwaltung.aspx" />
     <Content Include="View\Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="View\SQLview.aspx" />
     <Content Include="View\Tabelle.aspx" />
     <Content Include="View\Turnierverwaltung.aspx" />
     <Content Include="Web.config">
@@ -213,7 +210,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controller\Controller.cs" />
-    <Compile Include="Controller\SQL.cs" />
     <Compile Include="Models\Fussballspieler.cs" />
     <Compile Include="Models\Handballspieler.cs" />
     <Compile Include="Models\Mannschaft.cs" />
@@ -222,13 +218,6 @@
     <Compile Include="Models\Spieler.cs" />
     <Compile Include="Models\Tennisspieler.cs" />
     <Compile Include="Models\Trainer.cs" />
-    <Compile Include="View\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="View\Personenverwaltung.aspx.cs">
       <DependentUpon>Personenverwaltung.aspx</DependentUpon>
@@ -236,13 +225,6 @@
     </Compile>
     <Compile Include="View\Personenverwaltung.aspx.designer.cs">
       <DependentUpon>Personenverwaltung.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -282,13 +264,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="View\SQLview.aspx.cs">
-      <DependentUpon>SQLview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\SQLview.aspx.designer.cs">
-      <DependentUpon>SQLview.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Tabelle.aspx.cs">
       <DependentUpon>Tabelle.aspx</DependentUpon>

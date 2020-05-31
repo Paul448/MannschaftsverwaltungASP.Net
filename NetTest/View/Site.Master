@@ -55,7 +55,6 @@
                         <li><a runat="server" href="~/view/Mannschaftsverwaltung">Mannschaftsverwaltung</a></li>
                         <li><a runat="server" href="~/View/Tabelle">Datenbank-Session</a></li>
                         <li><a runat="server" href="~/view/Turnierverwaltung">Turnierverwaltung</a></li>
-                        <li><a runat="server" href="~/view/SQLview">SQL-View</a></li>
                     </ul>
                 </div>
             </div>
