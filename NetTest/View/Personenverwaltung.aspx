@@ -25,7 +25,7 @@
     <br /> 
     <asp:Button ID="btn_add" runat="server" Text="Hinzufügen" Height="35px" Width="150" OnClick="btn_add_Click" BackColor="#555555" BorderColor="Black" BorderWidth="2px" Font-Bold="True" Font-Size="17px" ForeColor="White" /> <br /> <br />
    </div>
-        <div class="Fright">
+        <div class="Fright" style="padding-top: 30px;">
             <br />
             <br />
             <h2>Sortierung</h2>
@@ -42,7 +42,6 @@
             <asp:Button ID="btnSort" runat="server" Text="Sortieren" OnClick="btnSort_Click" Width="122px" Height="31px" />
         </div>
         </div>
-        <br />
     <div style="float: left">
     <asp:Label ID="lbl_Info" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red"/>
     <br />
@@ -58,4 +57,5 @@
     <h2>Physiotherapeut:</h2>
     <asp:Table ID="TablePhysio" runat="server" BorderWidth ="2" BorderColor="Black" CellPadding="100" CellSpacing="100" Width="400px"></asp:Table> <br />
         </div>
+    <div style="visibility: hidden;"
 </asp:Content>

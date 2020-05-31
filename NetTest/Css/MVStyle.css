@@ -31,12 +31,3 @@ H3 {
 .Main {
     float: left;
 }
-
-.RBL label {
-    display: block;
-}
-
-.RBL td {
-    text-align: center;
-    width: 20px;
-}
