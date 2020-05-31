@@ -27,3 +27,16 @@ H3 {
     border: 0;
     padding: 0;
 }
+
+.Main {
+    float: left;
+}
+
+.RBL label {
+    display: block;
+}
+
+.RBL td {
+    text-align: center;
+    width: 20px;
+}

@@ -31,6 +31,9 @@ namespace NetTest.View
             else
             {
                 LoadFelder();
+                var ListMain = this.Verwalter.Personen;
+                SortList(ref ListMain, true, true);
+                this.Verwalter.Personen = ListMain;
             }
             TabellenErstellen();
             TabellenAktualisieren();
@@ -752,6 +755,125 @@ namespace NetTest.View
             Update.Font.Bold = true;
 
             return Update;
+        }
+
+        public void SortList(ref List<Person> varList, bool vorname, bool Aufwärts)
+        {
+            Person varP = null;
+            int AnzahlBubble = 0;
+            int AnzahlDurchläufe = 0;
+
+            if (Aufwärts == true && vorname == false)
+            {
+                // Aufwärts Nachname
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Name[0] > varList[index + 1].Name[0])
+                        {
+                            varP = varList[index];
+                            varList[index] = varList[index + 1];
+                            varList[index + 1] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == true && vorname == true)
+            {
+                // Aufwärts Vorname
+
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Vorname[0] > varList[index + 1].Vorname[0])
+                        {
+                            varP = varList[index];
+                            varList[index] = varList[index + 1];
+                            varList[index + 1] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == false && vorname == true)
+            {
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Vorname[0] < varList[index + 1].Vorname[0])
+                        {
+                            varP = varList[index + 1];
+                            varList[index + 1] = varList[index];
+                            varList[index] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == false && vorname == false)
+            {
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Name[0] < varList[index + 1].Name[0])
+                        {
+                            varP = varList[index + 1];
+                            varList[index + 1] = varList[index];
+                            varList[index] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void btnSort_Click(object sender, EventArgs e)
+        {
+            List<Person> Plist = this.Verwalter.Personen;
+            bool Aufwärts = true;
+            bool vorname = true;
+
+            if(this.CheckVorname.Items[0].Selected == true)
+            {
+                vorname = false;
+            }
+            if (this.CheckAbwärts.Items[0].Selected == true)
+            {
+                Aufwärts = true;
+            } else
+            {
+                Aufwärts = false;
+            }
+            SortList(ref Plist, vorname, Aufwärts);
+            this.Verwalter.Personen = Plist;
+            TabellenLöschen();
+            TabellenErstellen();
+            TabellenAktualisieren();
         }
     }
 }

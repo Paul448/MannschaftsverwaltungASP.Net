@@ -7,11 +7,13 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace NetTest.View {
-    
-    
-    public partial class Add {
-        
+namespace NetTest.View
+{
+
+
+    public partial class Add
+    {
+
         /// <summary>
         /// lblVorname-Steuerelement
         /// </summary>
@@ -20,7 +22,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblVorname;
-        
+
         /// <summary>
         /// txtVorname-Steuerelement
         /// </summary>
@@ -29,7 +31,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtVorname;
-        
+
         /// <summary>
         /// lblNachname-Steuerelement
         /// </summary>
@@ -38,7 +40,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNachname;
-        
+
         /// <summary>
         /// txtNachname-Steuerelement
         /// </summary>
@@ -47,7 +49,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNachname;
-        
+
         /// <summary>
         /// Label1-Steuerelement
         /// </summary>
@@ -56,7 +58,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// DropDownList1-Steuerelement
         /// </summary>
@@ -65,7 +67,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
+
         /// <summary>
         /// Table1-Steuerelement
         /// </summary>
@@ -74,7 +76,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Table1;
-        
+
         /// <summary>
         /// btn_add-Steuerelement
         /// </summary>
@@ -83,7 +85,34 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_add;
-        
+
+        /// <summary>
+        /// CheckVorname-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckVorname;
+
+        /// <summary>
+        /// CheckAbwärts-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList CheckAbwärts;
+
+        /// <summary>
+        /// btnSort-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSort;
+
         /// <summary>
         /// lbl_Info-Steuerelement
         /// </summary>
@@ -92,7 +121,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_Info;
-        
+
         /// <summary>
         /// TableFussball-Steuerelement
         /// </summary>
@@ -101,7 +130,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableFussball;
-        
+
         /// <summary>
         /// TableTennis-Steuerelement
         /// </summary>
@@ -110,7 +139,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableTennis;
-        
+
         /// <summary>
         /// TableHandball-Steuerelement
         /// </summary>
@@ -119,7 +148,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableHandball;
-        
+
         /// <summary>
         /// TableTrainer-Steuerelement
         /// </summary>
@@ -128,7 +157,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableTrainer;
-        
+
         /// <summary>
         /// TablePhysio-Steuerelement
         /// </summary>
