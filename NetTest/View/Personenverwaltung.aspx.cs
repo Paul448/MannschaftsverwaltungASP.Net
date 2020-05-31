@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NetTest.View
@@ -24,7 +22,6 @@ namespace NetTest.View
             }
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)
@@ -34,6 +31,9 @@ namespace NetTest.View
             else
             {
                 LoadFelder();
+                var ListMain = this.Verwalter.Personen;
+                SortList(ref ListMain, true, true);
+                this.Verwalter.Personen = ListMain;
             }
             TabellenErstellen();
             TabellenAktualisieren();
@@ -330,7 +330,7 @@ namespace NetTest.View
             TableTrainer.BorderStyle = BorderStyle.Solid;
             TableTrainer.CellPadding = 50;
 
-            for (int index = 0; index < FussballCount;index++)
+            for (int index = 0; index < FussballCount; index++)
             {
                 Row = new TableRow();
                 for (int index1 = 0; index1 < 8; index1++)
@@ -403,7 +403,7 @@ namespace NetTest.View
 
         public void TabellenAktualisieren()
         {
-            
+
             int FussballCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Fussballspieler").Count();
             int HandballCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Handballspieler").Count();
             int TennisCount = this.Verwalter.Personen.Where(o => o.GetPosition() == "Tennisspieler").Count();
@@ -419,7 +419,7 @@ namespace NetTest.View
             string string3 = "";
             List<Person> Listx = new List<Person>();
 
-            for (int i1 = 0;i1 < FussballCount; i1++)
+            for (int i1 = 0; i1 < FussballCount; i1++)
             {
                 Listx = Verwalter.Personen.Where(o => o.GetPosition() == "Fussballspieler").ToList();
                 Listx[i1].GetPersonData(ref ID, ref Name, ref vorname, ref Geburtsdatum, ref string1, ref string2, ref string3);
@@ -659,7 +659,7 @@ namespace NetTest.View
             BtnOK.Visible = true;
             int CellsCount = varTable.Rows[Zeile].Cells.Count;
             varTable.Rows[Zeile + 1].Cells.Clear();
-            for(int index = 0; index < 6; index++)
+            for (int index = 0; index < 6; index++)
             {
                 varTable.Rows[Zeile + 1].Cells.Add(new TableCell());
             }
@@ -739,7 +739,7 @@ namespace NetTest.View
             Del.BorderWidth = 0;
             Del.BorderColor = System.Drawing.Color.Black;
             Del.UseSubmitBehavior = false;
-            
+
 
             return Del;
         }
@@ -755,6 +755,125 @@ namespace NetTest.View
             Update.Font.Bold = true;
 
             return Update;
+        }
+
+        public void SortList(ref List<Person> varList, bool vorname, bool Aufwärts)
+        {
+            Person varP = null;
+            int AnzahlBubble = 0;
+            int AnzahlDurchläufe = 0;
+
+            if (Aufwärts == true && vorname == false)
+            {
+                // Aufwärts Nachname
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Name[0] > varList[index + 1].Name[0])
+                        {
+                            varP = varList[index];
+                            varList[index] = varList[index + 1];
+                            varList[index + 1] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == true && vorname == true)
+            {
+                // Aufwärts Vorname
+
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Vorname[0] > varList[index + 1].Vorname[0])
+                        {
+                            varP = varList[index];
+                            varList[index] = varList[index + 1];
+                            varList[index + 1] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == false && vorname == true)
+            {
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Vorname[0] < varList[index + 1].Vorname[0])
+                        {
+                            varP = varList[index + 1];
+                            varList[index + 1] = varList[index];
+                            varList[index] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else if (Aufwärts == false && vorname == false)
+            {
+                for (int index2 = 1; index2 < varList.Count(); index2++)
+                {
+                    AnzahlDurchläufe++;
+                    for (int index = 0; index < varList.Count() - 1; index++)
+                    {
+                        AnzahlBubble++;
+                        if (varList[index].Name[0] < varList[index + 1].Name[0])
+                        {
+                            varP = varList[index + 1];
+                            varList[index + 1] = varList[index];
+                            varList[index] = varP;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void btnSort_Click(object sender, EventArgs e)
+        {
+            List<Person> Plist = this.Verwalter.Personen;
+            bool Aufwärts = true;
+            bool vorname = true;
+
+            if(this.CheckVorname.Items[0].Selected == true)
+            {
+                vorname = false;
+            }
+            if (this.CheckAbwärts.Items[0].Selected == true)
+            {
+                Aufwärts = true;
+            } else
+            {
+                Aufwärts = false;
+            }
+            SortList(ref Plist, vorname, Aufwärts);
+            this.Verwalter.Personen = Plist;
+            TabellenLöschen();
+            TabellenErstellen();
+            TabellenAktualisieren();
         }
     }
 }

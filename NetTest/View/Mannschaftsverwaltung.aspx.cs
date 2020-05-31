@@ -66,7 +66,10 @@ namespace NetTest.View
             MSpersonen = Verwalter.Mannschaften[varMS].Personen.ToList();
             ListPersonen.Items.Clear();
 
-            for(int i = 0; i < MSpersonen.Count(); i++)
+            CompareLists(ref MSpersonen); // Vergleich die Manschaftsliste und Personenliste | Wenn person gelöscht wurde wird sie auch im der Mannschaft gelöscht
+            Verwalter.Mannschaften[varMS].Personen = MSpersonen;
+
+            for (int i = 0; i < MSpersonen.Count(); i++)
             {
                 ListPersonen.Items.Add(MSpersonen[i].Vorname + " " + MSpersonen[i].Name);
             }
@@ -126,6 +129,24 @@ namespace NetTest.View
             string Name = this.Request.Form["ctl00$MainContent$txtName"];
             this.Verwalter.Mannschaften.Add(new Mannschaft(Name));
             Mannschaften_Laden();
+        }
+
+        protected void CompareLists(ref List<Person> ListCompare)
+        {
+            var PersonenUngleich = ListCompare.Except(Verwalter.Personen).ToList();
+            if(PersonenUngleich.Count() > 0)
+            {
+                for(int index = 0; index < PersonenUngleich.Count(); index++)
+                {
+                    ListCompare.Remove(PersonenUngleich[index]);
+                }
+                infoLabel.Visible = true;
+                infoLabel.Text = "Person " + PersonenUngleich[0].Name + " wurde aus der Mannschaft entfernt!";
+            }
+            else
+            {
+
+            }
         }
     }
 }

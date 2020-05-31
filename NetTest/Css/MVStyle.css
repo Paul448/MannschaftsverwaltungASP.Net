@@ -1,7 +1,11 @@
 ﻿.div1 {
-    background-color: red;
     width: 800px;
-    height: 100%;
+    height: 270px;
+}
+
+.div2 {
+    width: 800px;
+    height: 50px;
 }
 
 #ListPersonen {
@@ -22,4 +26,17 @@ H3 {
     margin: 0;
     border: 0;
     padding: 0;
+}
+
+.Main {
+    float: left;
+}
+
+.RBL label {
+    display: block;
+}
+
+.RBL td {
+    text-align: center;
+    width: 20px;
 }
