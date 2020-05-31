@@ -1,5 +1,5 @@
 # MannschaftsverwaltungASP.Net
-Personen &amp; Mannschaftsverwaltung von Paul Jansen in C# mit ASP.Net
+Personen und Mannschaftsverwaltung von Paul Jansen in C# mit ASP.Net
 
 WEBSITE: https://mannschaftsverwaltung.azurewebsites.net/
 
@@ -21,5 +21,5 @@ Mannschaftsverwaltung
 - Überprüft ob Spieler gelöscht wurde
 
 Programm:
-- Verwalter daten werden in Session gespeichert
+- Verwalter-Daten werden in Session gespeichert
 - Anbindung zur einer SQL-Datenbank (Momentan Deaktiviert)
