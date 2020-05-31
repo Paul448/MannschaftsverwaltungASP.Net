@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Autor: Paul Jansen
+// Letzte Änderung: 31.05.2020
+// Beschreibung + Änderungen siehte GitHub
+// https://github.com/Paul448/MannschaftsverwaltungASP.Net
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
