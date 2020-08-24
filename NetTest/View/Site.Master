@@ -39,6 +39,9 @@
         </asp:ScriptManager>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="TopBar">
+                <asp:Label ID="SQL_STATUS" runat="server" ></asp:Label>
+            </div>
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

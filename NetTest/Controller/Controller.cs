@@ -9,7 +9,7 @@ using MySql.Data;
 
 namespace NetTest
 {
-    public class Controller
+    public partial class Controller
     {
         private List<Person> _Personen;
         private List<Mannschaft> _Mannschaften;
@@ -18,7 +18,7 @@ namespace NetTest
         public List<Person> Personen { get => _Personen; set => _Personen = value; }
         public List<Mannschaft> Mannschaften { get => _Mannschaften; set => _Mannschaften = value; }
         public int SelectedMannschaft { get => _selectedMannschaft; set => _selectedMannschaft = value; }
-        public MySqlConnection SQLconn { get => _SQLconnection; set => _SQLconnection = value; }
+        public MySqlConnection SQL_Verbindung { get => _SQLconnection; set => _SQLconnection = value; }
 
         public Controller()
         {
@@ -27,6 +27,8 @@ namespace NetTest
 
         public void run()
         {
+            Verbindungsaufbau();
+
             //Fussballspieler(string v_name, string v_vorname, int v_tore, int v_siege, int v_nummer)
             //Trainer(string v_name, string v_vorname, int v_Siege)
             //Physiotherapeut(string v_name, string v_vorname, int Bewertung)
@@ -59,6 +61,7 @@ namespace NetTest
             //SQLconnection();
         }
 
+        /*
         public void SQLconnection()
         {
             List<Person> SQLpersonen = new List<Person>();
@@ -105,6 +108,6 @@ namespace NetTest
                
             }
         }
-
+        */
     }
 }

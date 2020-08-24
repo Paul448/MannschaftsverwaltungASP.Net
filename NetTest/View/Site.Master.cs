@@ -25,6 +25,15 @@ namespace NetTest
             {
 
             }
+            if(this.Verwalter.SQL_Verbindung.State == System.Data.ConnectionState.Open)
+            {
+                SQL_STATUS.Text = "SQL Online";
+                SQL_STATUS.BackColor = System.Drawing.Color.Green;
+            } else
+            {
+                SQL_STATUS.Text = "SQL Offline";
+                SQL_STATUS.BackColor = System.Drawing.Color.Red;
+            }
         }
     }
 }

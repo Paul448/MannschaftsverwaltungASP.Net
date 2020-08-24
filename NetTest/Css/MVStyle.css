@@ -31,3 +31,15 @@ H3 {
 .Main {
     float: left;
 }
+
+.TopBar {
+    background-color: green;
+    font-size: 15px;
+    font-weight: bold;
+    right: 0;
+    position: absolute;
+    height: 100%;
+    width: 75px;
+    text-align: center;
+    vertical-align: middle;
+}
