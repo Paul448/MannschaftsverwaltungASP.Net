@@ -28,6 +28,7 @@ namespace NetTest
         public void run()
         {
             Verbindungsaufbau();
+            Testdaten();
 
             //Fussballspieler(string v_name, string v_vorname, int v_tore, int v_siege, int v_nummer)
             //Trainer(string v_name, string v_vorname, int v_Siege)

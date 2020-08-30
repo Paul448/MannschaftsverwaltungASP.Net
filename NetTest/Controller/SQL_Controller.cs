@@ -26,7 +26,14 @@ namespace NetTest
 
         void Testdaten()
         {
+            string TestSelect = "Select * from PersonData";
+            MySqlCommand cmd1 = new MySqlCommand(TestSelect, SQL_Verbindung);
+            MySqlDataReader rdr = cmd1.ExecuteReader();
 
+            for(int index = 0; index < rdr.FieldCount; index++)
+            {
+                string test = rdr.GetName(index);
+            }
         }
     }
 }
