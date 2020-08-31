@@ -14,17 +14,15 @@ namespace NetTest
     public partial class _Default : Page
     {
         Controller Verwalter = new Controller();
-       protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
-            if(this.Session["Verwalter"] != null)
+            if (this.Session["Verwalter"] != null)
             {
                 Verwalter = (Controller)this.Session["Verwalter"];
             }
             else
             {
-                this.Session["Verwalter"] = new Controller();
-                Verwalter = (Controller)this.Session["Verwalter"];
-                Verwalter.run();
+                this.Response.Redirect(@"~\View\LoginView.aspx");
             }
         }
     }

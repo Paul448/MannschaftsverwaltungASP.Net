@@ -24,7 +24,7 @@ namespace NetTest.View
             }
             else
             {
-                this.Response.Redirect(@"~\Default.aspx");
+                this.Response.Redirect(@"~\View\LoginView.aspx");
             }
         }
 
