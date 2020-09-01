@@ -37,5 +37,11 @@ namespace NetTest
             }
             */
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+           this.Session["Verwalter"] = null;
+            this.Response.Redirect(@"~\View\LoginView.aspx");
+        }
     }
 }

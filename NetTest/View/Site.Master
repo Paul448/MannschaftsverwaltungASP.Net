@@ -40,7 +40,8 @@
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="TopBar">
-                <asp:Label ID="SQL_STATUS" runat="server" ></asp:Label>
+                <!--<asp:Label ID="SQL_STATUS" runat="server" ></asp:Label> -->
+                <asp:Button  ID="Button1" runat="server" Text="Logout" OnClick="Button1_Click" BackColor="Gray" BorderStyle="None" Font-Names="Arial" Height="50px" Width="80px" />     
             </div>
             <div class="container">
                 <div class="navbar-header">

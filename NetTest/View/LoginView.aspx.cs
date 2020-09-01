@@ -34,16 +34,18 @@ namespace NetTest.View
                 {
                     Back1 = reader1.GetInt16(0);
                 }
+                reader1.Close();
                 if(Back1 == 1)
                 {
                     // User Vorhanden
-                    string SelectPW = "Select Passwort from Users where Username = '" + UserTXT + "'";
+                    string SelectPW = "select passwort from Users where Username = '" + UserTXT + "'";
                     MySqlCommand cmd2 = new MySqlCommand(SelectPW, SQLLogin);
                     MySqlDataReader reader2 = cmd2.ExecuteReader();
                     while (reader2.Read())
                     {
-                        backPW = reader1.GetString(0);
+                        backPW = reader2.GetString(0);
                     }
+                    reader2.Close();
                     if(backPW == PWTXT)
                     {
                         //Passwort Richtig
@@ -57,8 +59,9 @@ namespace NetTest.View
                             this.Session["Verwalter"] = new Controller();
                             Verwalter = (Controller)this.Session["Verwalter"];
                             Verwalter.run();
+                            this.Response.Redirect(@"~\Default.aspx");
                         }
-
+                        this.Verwalter.Username = UserTXT;
                     }
                     else
                     {
@@ -68,11 +71,15 @@ namespace NetTest.View
                 {
                     txtInfo.Text = "User nicht gefunden!";
                 }
+                SQLLogin.Close();
             }
+            
             catch
             {
                 txtInfo.Text = "Verbindung zur Datenbank fehlgeschlagen";
+                
             }
+            
         }
     }
 }

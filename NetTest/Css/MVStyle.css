@@ -33,7 +33,7 @@ H3 {
 }
 
 .TopBar {
-    background-color: green;
+    background-color: grey;
     font-size: 15px;
     font-weight: bold;
     right: 0;
@@ -41,5 +41,9 @@ H3 {
     height: 100%;
     width: 75px;
     text-align: center;
-    vertical-align: middle;
+}
+
+.LoginBox {
+    margin-left: 150px;
+    display: inline;
 }

@@ -7,13 +7,11 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace NetTest
-{
-
-
-    public partial class SiteMaster
-    {
-
+namespace NetTest {
+    
+    
+    public partial class SiteMaster {
+        
         /// <summary>
         /// SQL_STATUS-Steuerelement
         /// </summary>
@@ -22,7 +20,16 @@ namespace NetTest
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SQL_STATUS;
-
+        
+        /// <summary>
+        /// Button1-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
         /// <summary>
         /// MainContent-Steuerelement
         /// </summary>

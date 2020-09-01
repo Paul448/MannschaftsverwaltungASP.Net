@@ -15,10 +15,12 @@ namespace NetTest
         private List<Mannschaft> _Mannschaften;
         private int _selectedMannschaft;
         private MySqlConnection _SQLconnection;
+        private string _username;
         public List<Person> Personen { get => _Personen; set => _Personen = value; }
         public List<Mannschaft> Mannschaften { get => _Mannschaften; set => _Mannschaften = value; }
         public int SelectedMannschaft { get => _selectedMannschaft; set => _selectedMannschaft = value; }
         public MySqlConnection SQL_Verbindung { get => _SQLconnection; set => _SQLconnection = value; }
+        public string Username { get => _username; set => _username = value; }
 
         public Controller()
         {
