@@ -35,5 +35,23 @@ namespace NetTest
                 string test = rdr.GetName(index);
             }
         }
+
+
+        void Mannschaften_Laden()
+        {
+
+        }
+
+        void Spieler_Laden()
+        {
+
+        }
+
+        void Trainer_Laden()
+        {
+
+        }
+
+
     }
 }
