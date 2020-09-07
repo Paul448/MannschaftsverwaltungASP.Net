@@ -58,6 +58,7 @@
                         <li><a runat="server" href="~/View/Personenverwaltung">Personenverwaltung</a></li>
                         <li><a runat="server" href="~/view/Mannschaftsverwaltung">Mannschaftsverwaltung</a></li>
                         <li><a runat="server" href="~/View/Tabelle">Datenbank-Session</a></li>
+                        <li><a runat="server" href="~/View/Turnierverwaltung">Turnierverwaltung</a></li>
                     </ul>
                 </div>
             </div>
