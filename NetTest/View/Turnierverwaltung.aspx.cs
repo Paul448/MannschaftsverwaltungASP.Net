@@ -25,6 +25,15 @@ namespace NetTest.View
 
         protected void Page_Load(object sender, EventArgs e)
         {
+                if (!this.IsPostBack)
+                {
+                TurnierList.SelectedIndex = 1;
+                }
+                else
+                {
+
+                }
+
             TurnierList.Items.Clear();
             Load_TN();
             MS_LADEN();
@@ -58,11 +67,15 @@ namespace NetTest.View
 
             void MS_LADEN()
             {
-                TurnierList.SelectedIndex = 0;
+                
                 String MSNAME = "";
                 string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
                 MySqlConnection SQLMS = new MySqlConnection(cs);
                 SQLMS.Open();
+                if(TurnierList.SelectedIndex == -1)
+                { 
+                TurnierList.SelectedIndex = 0;
+                }
                 MySqlCommand cmd1 = new MySqlCommand("Select MS_NAME from Tunier_MS where T_NAME ='" + TurnierList.SelectedItem.Text + "'", SQLMS);
                 MySqlDataReader reader1 = cmd1.ExecuteReader();
                 TableRow TR = new TableRow();
@@ -84,5 +97,10 @@ namespace NetTest.View
                 reader1.Close();
                 SQLMS.Close();
             }
+
+        protected void TurnierList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MS_LADEN();
         }
+    }
     }
