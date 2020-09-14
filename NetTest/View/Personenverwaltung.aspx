@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Site.Master" AutoEventWireup="true" CodeBehind="Personenverwaltung.aspx.cs" Inherits="NetTest.View.Add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Site.Master" AutoEventWireup="true" CodeBehind="Personenverwaltung.aspx.cs" Inherits="NetTest.View.Personenverwaltung" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    <div class="div1">
@@ -57,5 +57,5 @@
     <h2>Physiotherapeut:</h2>
     <asp:Table ID="TablePhysio" runat="server" BorderWidth ="2" BorderColor="Black" CellPadding="100" CellSpacing="100" Width="400px"></asp:Table> <br />
         </div>
-    <div style="visibility: hidden;"
+    <div style="visibility: hidden;"></div>
 </asp:Content>

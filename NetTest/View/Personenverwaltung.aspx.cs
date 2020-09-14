@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace NetTest.View
 {
-    public partial class Add : System.Web.UI.Page
+    public partial class Personenverwaltung : System.Web.UI.Page
     {
         private Controller _verwalter;
         public Controller Verwalter { get => _verwalter; set => _verwalter = value; }
