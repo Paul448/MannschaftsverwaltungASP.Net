@@ -152,6 +152,7 @@
   <ItemGroup>
     <Content Include="Css\MVStyle.css" />
     <Content Include="View\LoginView.aspx" />
+    <Content Include="View\PersonenSQL.aspx" />
     <Content Include="View\Personenverwaltung.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -231,6 +232,13 @@
     </Compile>
     <Compile Include="View\LoginView.aspx.designer.cs">
       <DependentUpon>LoginView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\PersonenSQL.aspx.cs">
+      <DependentUpon>PersonenSQL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PersonenSQL.aspx.designer.cs">
+      <DependentUpon>PersonenSQL.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Personenverwaltung.aspx.cs">
       <DependentUpon>Personenverwaltung.aspx</DependentUpon>
