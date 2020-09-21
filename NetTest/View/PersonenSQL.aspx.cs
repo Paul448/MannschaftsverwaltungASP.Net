@@ -12,53 +12,65 @@ namespace NetTest.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string ConnectionString = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
-            MySqlConnection SQL_Laden = new MySqlConnection(ConnectionString);
-            SQL_Laden.Open();
-            String Select_Fussball = "select PS_NAME, PS_Vname, SP.MS_NAME, FPS_TORE, FPS_Siege, FPS_NR from FussballSP SP inner join PersonData PS on SP.PS_ID = PS.PS_ID";
-            String Select_Trainer = "select * from Trainer TR inner join PersonData PS on TR.PS_ID = PS.PS_ID";
+            ReadTable();
+        }
 
-            MySqlCommand SL_FSB = new MySqlCommand(Select_Fussball, SQL_Laden);
-            TableCell Cell = new TableCell();
-            TableRow Row = new TableRow();
-            MySqlDataReader reader1 = SL_FSB.ExecuteReader();
-            while (reader1.Read())
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            CreateInsertTable();
+        }
+        void ReadTable()
             {
-                Row.Height = 30;
-                Row.Width = 400;
-                Cell.Text = reader1.GetString(0);
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                Cell.Text = reader1.GetString(1);
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                Cell.Text = reader1.GetString(2);
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                Cell.Text = reader1.GetString(3) + " Tore";
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                Cell.Text = reader1.GetString(4) + " Siege";
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                Cell.Text = reader1.GetString(5) + " Nr";
-                Cell.Width = 25;
-                Row.Cells.Add(Cell);
-                Cell = new TableCell();
-                TSpieler.Rows.Add(Row);
-                Row = new TableRow();
+            TSpieler.Rows.Clear();
+                string ConnectionString = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+                MySqlConnection SQL_Laden = new MySqlConnection(ConnectionString);
+                SQL_Laden.Open();
+                String Select_Fussball = "select PS_NAME, PS_Vname, SP.MS_NAME, FPS_TORE, FPS_Siege, FPS_NR from FussballSP SP inner join PersonData PS on SP.PS_ID = PS.PS_ID";
+                String Select_Trainer = "select * from Trainer TR inner join PersonData PS on TR.PS_ID = PS.PS_ID";
+
+                MySqlCommand SL_FSB = new MySqlCommand(Select_Fussball, SQL_Laden);
+                TableCell Cell = new TableCell();
+                TableRow Row = new TableRow();
+                MySqlDataReader reader1 = SL_FSB.ExecuteReader();
+                while (reader1.Read())
+                {
+                    Row.Height = 30;
+                    Row.Width = 400;
+                    Cell.Text = reader1.GetString(0);
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    Cell.Text = reader1.GetString(1);
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    Cell.Text = reader1.GetString(2);
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    Cell.Text = reader1.GetString(3) + " Tore";
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    Cell.Text = reader1.GetString(4) + " Siege";
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    Cell.Text = reader1.GetString(5) + " Nr";
+                    Cell.Width = 25;
+                    Row.Cells.Add(Cell);
+                    Cell = new TableCell();
+                    TSpieler.Rows.Add(Row);
+                    Row = new TableRow();
+                }
+                reader1.Close();
+                SQL_Laden.Close();
             }
-            reader1.Close();
-            SQL_Laden.Close();
 
             void NewFSP(string vName, string Name, string MS, int Tore)
             {
-                MySqlConnection SQL_INS = new MySqlConnection(ConnectionString);
+            string ConnectionString = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+            MySqlConnection SQL_INS = new MySqlConnection(ConnectionString);
                 SQL_INS.Open();
                 string max = "select max(PS_ID) from PersonData";
                 MySqlCommand max_PS_ID = new MySqlCommand(max, SQL_INS);
@@ -70,12 +82,17 @@ namespace NetTest.View
                     MaxPS_ID = rd1.GetInt16(0);
                 }
             }
-        }
 
         protected void BtnNew_Click(object sender, EventArgs e)
         {
             BtnNew.Visible = false;
             TNEW.Visible = true;
+            ReadTable();
+        }
+
+        void CreateInsertTable()
+        {
+            TNEW.Rows.Clear();
             TableCell Cell = new TableCell();
             TableRow Row = new TableRow();
             Row.Height = 10;
@@ -119,6 +136,10 @@ namespace NetTest.View
             Cell = new TableCell();
             Cell.BorderWidth = 0;
             Button btn1 = new Button();
+            btn1.Click += (s, e) =>
+            {
+                NewFSP(txtVorname.Text, txtNachname.Text, BoxL.SelectedItem.Text, Convert.ToInt32(txtTore.Text));
+            };
             Cell.Controls.Add(btn1);
             btn1.Text = "Bestätigen";
             Row.Cells.Add(Cell);
