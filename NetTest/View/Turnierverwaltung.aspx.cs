@@ -21,21 +21,19 @@ namespace NetTest.View
             {
                 this.Response.Redirect(@"~\View\LoginView.aspx");
             }
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
                 if (!this.IsPostBack)
                 {
-                TurnierList.SelectedIndex = 1;
+                Load_TN();
                 }
                 else
                 {
 
                 }
-
-            TurnierList.Items.Clear();
-            Load_TN();
             MS_LADEN();
 
         }
@@ -67,15 +65,13 @@ namespace NetTest.View
 
             void MS_LADEN()
             {
-                
+            if (TurnierList.SelectedIndex != -1)
+            {
+                MS_Table.Rows.Clear();
                 String MSNAME = "";
                 string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
                 MySqlConnection SQLMS = new MySqlConnection(cs);
                 SQLMS.Open();
-                if(TurnierList.SelectedIndex == -1)
-                { 
-                TurnierList.SelectedIndex = 0;
-                }
                 MySqlCommand cmd1 = new MySqlCommand("Select MS_NAME from Tunier_MS where T_NAME ='" + TurnierList.SelectedItem.Text + "'", SQLMS);
                 MySqlDataReader reader1 = cmd1.ExecuteReader();
                 TableRow TR = new TableRow();
@@ -86,21 +82,92 @@ namespace NetTest.View
                 TC = new TableCell();
                 TR = new TableRow();
                 while (reader1.Read())
-                    {
-                        MSNAME = reader1.GetString(0);
-                        TC = new TableCell();
-                        TC.Text = MSNAME;
-                        TR.Cells.Add(TC);
-                        MS_Table.Rows.Add(TR);
-                        TR = new TableRow();
-                    }
+                {
+                    MSNAME = reader1.GetString(0);
+                    TC = new TableCell();
+                    TC.Text = MSNAME;
+                    TR.Cells.Add(TC);
+                    MS_Table.Rows.Add(TR);
+                    TR = new TableRow();
+                }
                 reader1.Close();
                 SQLMS.Close();
+                Load_Spiele();
+            } else
+            {
+
+            }
             }
 
         protected void TurnierList_SelectedIndexChanged(object sender, EventArgs e)
         {
             MS_LADEN();
+        }
+
+        void Load_Spiele()
+        {
+            Spiele_Table.Rows.Clear();
+            string sel = "select * from Spiele where T_NAME = '" + TurnierList.SelectedItem.Text + "'";
+            string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+            MySqlConnection SQLSP = new MySqlConnection(cs);
+            SQLSP.Open();
+            MySqlCommand cmd1 = new MySqlCommand(sel, SQLSP);
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+            TableRow TR = new TableRow();
+            TableCell TC = new TableCell();
+            TC.Text = "Spiel ID:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "Turniername:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "Mannschaft 1:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "Mannschaft 2:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "MS1 Tore:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "MS2 Tore:";
+            TR.Cells.Add(TC);
+            Spiele_Table.Rows.Add(TR);
+            TC = new TableCell();
+            TR = new TableRow();
+            while (reader1.Read())
+            {
+                int SPID = reader1.GetInt16(0);
+                string TNAME = reader1.GetString(1);
+                string MS1 = reader1.GetString(2);
+                string MS2 = reader1.GetString(3);
+                int MS1Tore = reader1.GetInt16(4);
+                int MS2Tore = reader1.GetInt16(5);
+                TC = new TableCell();
+                TR = new TableRow();
+                TC.Text = Convert.ToString(SPID);
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = TNAME;
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = MS1;
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = MS2;
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = Convert.ToString(MS1Tore);
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = Convert.ToString(MS2Tore);
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                Spiele_Table.Rows.Add(TR);
+
+            }
+            reader1.Close();
+            SQLSP.Close();
         }
     }
     }
