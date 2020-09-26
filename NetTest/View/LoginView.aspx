@@ -9,6 +9,8 @@
     <asp:TextBox ID="txtPasswort" runat="server" TextMode="Password" BorderStyle="Solid" BorderWidth="1px" Height="20px" BorderColor="Black"></asp:TextBox><br />
     <br />
     <asp:Button ID="btnLogin" runat="server" Text="Anmelden" OnClick="btnLogin_Click" /> <br />
-    <asp:Label ID="txtInfo" runat="server" Text=""></asp:Label>
+    <asp:Label ID="txtInfo" runat="server" Text=""></asp:Label> <br /> <br />
+    <h4>Benutzer: User | Passwort: qwertz</h4> 
+    <h4>Benutzer: Admin | Passwort: qwertz</h4>
 
 </asp:Content>

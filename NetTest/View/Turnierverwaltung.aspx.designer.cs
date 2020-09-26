@@ -7,11 +7,13 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace NetTest.View {
-    
-    
-    public partial class Turnierverwaltung {
-        
+namespace NetTest.View
+{
+
+
+    public partial class Turnierverwaltung
+    {
+
         /// <summary>
         /// lblInfo-Steuerelement
         /// </summary>
@@ -20,7 +22,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInfo;
-        
+
         /// <summary>
         /// Erstellen-Steuerelement
         /// </summary>
@@ -29,7 +31,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Erstellen;
-        
+
         /// <summary>
         /// Löschen-Steuerelement
         /// </summary>
@@ -38,7 +40,7 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Löschen;
-        
+
         /// <summary>
         /// TurnierList-Steuerelement
         /// </summary>
@@ -47,7 +49,16 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox TurnierList;
-        
+
+        /// <summary>
+        /// TableAddMS-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TableAddMS;
+
         /// <summary>
         /// MS_Table-Steuerelement
         /// </summary>
@@ -56,7 +67,16 @@ namespace NetTest.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table MS_Table;
-        
+
+        /// <summary>
+        /// btn_SpielAdd-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_SpielAdd;
+
         /// <summary>
         /// Spiele_Table-Steuerelement
         /// </summary>

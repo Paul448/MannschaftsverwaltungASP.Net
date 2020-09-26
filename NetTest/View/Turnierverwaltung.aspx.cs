@@ -29,12 +29,14 @@ namespace NetTest.View
                 if (!this.IsPostBack)
                 {
                 Load_TN();
+                TurnierList.SelectedIndex = 0;
                 }
                 else
                 {
 
                 }
             MS_LADEN();
+            Add_MS();
 
         }
 
@@ -76,11 +78,6 @@ namespace NetTest.View
                 MySqlDataReader reader1 = cmd1.ExecuteReader();
                 TableRow TR = new TableRow();
                 TableCell TC = new TableCell();
-                TC.Text = "Teilnehmende Mannschaften:";
-                TR.Cells.Add(TC);
-                MS_Table.Rows.Add(TR);
-                TC = new TableCell();
-                TR = new TableRow();
                 while (reader1.Read())
                 {
                     MSNAME = reader1.GetString(0);
@@ -168,6 +165,64 @@ namespace NetTest.View
             }
             reader1.Close();
             SQLSP.Close();
+        }
+
+        void Add_MS()
+        {
+            string[] ExistingMS = new string[15];
+            string[] MS = new string[20];
+            for (int index = 0; index < MS_Table.Rows.Count; index++)
+            {
+                ExistingMS[index] = MS_Table.Rows[index].Cells[0].Text;
+            }
+            string sel = "select * from MS";
+            string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+            MySqlConnection SQLMS1 = new MySqlConnection(cs);
+            SQLMS1.Open();
+            MySqlCommand cmd1 = new MySqlCommand(sel, SQLMS1);
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+            int index1 = 0;
+            while(reader1.Read())
+            {
+                MS[index1] = reader1.GetString(0);
+                index1++;
+            }
+            reader1.Close();
+
+            string[] MS_LIST = MS.Except(ExistingMS).ToArray();
+
+            TableAddMS.Visible = true;
+            TableRow TR = new TableRow();
+            TableCell TC = new TableCell();
+            DropDownList DD = new DropDownList();
+            Button BtnAdd = new Button();
+            BtnAdd.Click += (s, e) =>
+            {
+                DropDownList DDTable = (DropDownList)TableAddMS.Rows[0].Cells[0].Controls[0];
+                // Insert DB
+                MySqlCommand cmd2 = new MySqlCommand("Insert Into Tunier_MS (T_NAME, MS_NAME) Values ('" + TurnierList.SelectedItem.Text + "', '" + DDTable.SelectedItem.Text + "')" , SQLMS1);
+                cmd2.ExecuteNonQuery();
+                
+            };
+            BtnAdd.Text = "Hinzufügen";
+
+            for(int index = 0; index < MS_LIST.Count(); index++)
+            {
+                DD.Items.Add(MS_LIST[index]);
+            }
+
+            TC.Controls.Add(DD);
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "   ";
+            TC.Controls.Add(BtnAdd);
+            TR.Cells.Add(TC);
+            TableAddMS.Rows.Add(TR);
+        }
+
+        protected void btn_MSADD_Click(object sender, EventArgs e)
+        {
+            Add_MS();
         }
     }
     }
