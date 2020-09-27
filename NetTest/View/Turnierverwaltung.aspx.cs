@@ -80,11 +80,27 @@ namespace NetTest.View
                 TableCell TC = new TableCell();
                 while (reader1.Read())
                 {
+                    Button btnDel = new Button();
+                    btnDel.Click += (s, e) =>
+                    {
+                        string MS = btnDel.Attributes["MS"];
+                        string del = "delete from Tunier_MS where T_NAME ='" + TurnierList.SelectedItem.Text + "' and MS_NAME = '" + MSNAME + "'";
+                        MySqlConnection DELMS = new MySqlConnection(cs);
+                        DELMS.Open();
+                        MySqlCommand cmd3 = new MySqlCommand(del, DELMS);
+                        cmd3.ExecuteNonQuery();
+                        MS_LADEN(); // Könnte Fehler verursachen
+                    };
+                    btnDel.Text = "Löschen";
                     MSNAME = reader1.GetString(0);
+                    btnDel.Attributes.Add("MS", MSNAME);
                     TC = new TableCell();
                     TC.Text = MSNAME;
                     TR.Cells.Add(TC);
                     MS_Table.Rows.Add(TR);
+                    TC = new TableCell();
+                    TC.Controls.Add(btnDel);
+                    TR.Cells.Add(TC);
                     TR = new TableRow();
                 }
                 reader1.Close();
