@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Site.Master" AutoEventWireup="true" CodeBehind="Turnierverwaltung.aspx.cs" Inherits="NetTest.View.Turnierverwaltung" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Turnierverwaltung.aspx.cs" Inherits="NetTest.View.Turnierverwaltung" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Turnierverwaltung</h1>
     <asp:Label ID="lblInfo" runat="server"></asp:Label> <br />
@@ -11,6 +11,10 @@
     <asp:Table ID="MS_Table" runat="server" BorderWidth="2" GridLines="Both" BorderStyle="Solid" Width="280px">
     </asp:Table> <br />
     <h3>Spiele:</h3>
-    <asp:Button ID="btn_SpielAdd" runat="server" Text="Erstellen" /> <br /> <br />
+    Mannschaft 1: <asp:DropDownList ID="ListMS1" runat="server"></asp:DropDownList>
+    Mannschaft 2: <asp:DropDownList ID="ListMS2" runat="server"></asp:DropDownList> <br />
+    MS1 Tore <asp:TextBox ID="txtMS1Tore" runat="server" TextMode="Number" Width="50px"></asp:TextBox>
+    MS2 Tore<asp:TextBox ID="txtMS2Tore" runat="server"  TextMode="Number" Width="50px"></asp:TextBox> <br />
+    <asp:Button ID="btn_SpielAdd" runat="server" Text="Erstellen" OnClick="btn_SpielAdd_Click" /> <br /> <br />
     <asp:Table ID="Spiele_Table" runat="server" BorderWidth="2" GridLines="Both" BorderStyle="Solid" Width="550px"></asp:Table>
 </asp:Content>

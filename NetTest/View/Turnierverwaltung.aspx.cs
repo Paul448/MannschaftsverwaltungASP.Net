@@ -37,6 +37,7 @@ namespace NetTest.View
                 }
             MS_LADEN();
             Add_MS();
+            Spiele();
 
         }
 
@@ -84,12 +85,13 @@ namespace NetTest.View
                     btnDel.Click += (s, e) =>
                     {
                         string MS = btnDel.Attributes["MS"];
-                        string del = "delete from Tunier_MS where T_NAME ='" + TurnierList.SelectedItem.Text + "' and MS_NAME = '" + MSNAME + "'";
+                        string del = "delete from Tunier_MS where T_NAME ='" + TurnierList.SelectedItem.Text + "' and MS_NAME = '" + MS + "'";
                         MySqlConnection DELMS = new MySqlConnection(cs);
                         DELMS.Open();
                         MySqlCommand cmd3 = new MySqlCommand(del, DELMS);
                         cmd3.ExecuteNonQuery();
-                        MS_LADEN(); // Könnte Fehler verursachen
+                        DELMS.Close();
+                        this.Response.Redirect(@"~\View\Turnierverwaltung.aspx");
                     };
                     btnDel.Text = "Löschen";
                     MSNAME = reader1.GetString(0);
@@ -218,7 +220,8 @@ namespace NetTest.View
                 // Insert DB
                 MySqlCommand cmd2 = new MySqlCommand("Insert Into Tunier_MS (T_NAME, MS_NAME) Values ('" + TurnierList.SelectedItem.Text + "', '" + DDTable.SelectedItem.Text + "')" , SQLMS1);
                 cmd2.ExecuteNonQuery();
-                
+                this.Response.Redirect(@"~\View\Turnierverwaltung.aspx");
+
             };
             BtnAdd.Text = "Hinzufügen";
 
@@ -239,6 +242,34 @@ namespace NetTest.View
         protected void btn_MSADD_Click(object sender, EventArgs e)
         {
             Add_MS();
+        }
+
+        void Spiele()
+        {
+            ListMS1.Items.Clear();
+            ListMS2.Items.Clear();
+
+            string[] ExistingMS2 = new string[15];
+            for (int index = 0; index < MS_Table.Rows.Count; index++)
+            {
+                ExistingMS2[index] = MS_Table.Rows[index].Cells[0].Text;
+            }
+
+            for(int index2 = 0; index2 < MS_Table.Rows.Count; index2++)
+            {
+                ListMS1.Items.Add(ExistingMS2[index2]);
+                ListMS2.Items.Add(ExistingMS2[index2]);
+            }
+        }
+
+        protected void btn_SpielAdd_Click(object sender, EventArgs e)
+        {
+            string ins = "insert into Spiele (T_NAME, MS1, MS2, MS1_Tore, MS2_Tore) Values ('";
+            string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+            MySqlConnection SQLMS1 = new MySqlConnection(cs);
+            SQLMS1.Open();
+            MySqlCommand cmd1 = new MySqlCommand(ins, SQLMS1);
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
         }
     }
     }
