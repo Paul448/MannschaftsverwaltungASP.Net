@@ -37,8 +37,15 @@ namespace NetTest.View
                 }
             MS_LADEN();
             Add_MS();
-            Spiele();
+            
+            if (!this.IsPostBack)
+            {
+                Spiele();
+            }
+            else
+            {
 
+            }
         }
 
         void Load_TN()
@@ -246,30 +253,35 @@ namespace NetTest.View
 
         void Spiele()
         {
-            ListMS1.Items.Clear();
-            ListMS2.Items.Clear();
-
-            string[] ExistingMS2 = new string[15];
-            for (int index = 0; index < MS_Table.Rows.Count; index++)
+            if (ListMS1.SelectedIndex != 0 || ListMS2.SelectedIndex != 0)
             {
-                ExistingMS2[index] = MS_Table.Rows[index].Cells[0].Text;
-            }
+                ListMS1.Items.Clear();
+                ListMS2.Items.Clear();
 
-            for(int index2 = 0; index2 < MS_Table.Rows.Count; index2++)
-            {
-                ListMS1.Items.Add(ExistingMS2[index2]);
-                ListMS2.Items.Add(ExistingMS2[index2]);
+                string[] ExistingMS2 = new string[15];
+                for (int index = 0; index < MS_Table.Rows.Count; index++)
+                {
+                    ExistingMS2[index] = MS_Table.Rows[index].Cells[0].Text;
+                }
+
+                for (int index2 = 0; index2 < MS_Table.Rows.Count; index2++)
+                {
+                    ListMS1.Items.Add(ExistingMS2[index2]);
+                    ListMS2.Items.Add(ExistingMS2[index2]);
+                }
             }
         }
 
         protected void btn_SpielAdd_Click(object sender, EventArgs e)
         {
-            string ins = "insert into Spiele (T_NAME, MS1, MS2, MS1_Tore, MS2_Tore) Values ('";
+            string ins = "insert into Spiele (T_NAME, MS1, MS2, MS1_Tore, MS2_Tore) Values ('" + TurnierList.SelectedItem.Text + "', '" + ListMS1.SelectedItem.Text + "', '" + ListMS2.SelectedItem.Text + "', " + txtMS1Tore.Text + ", " + txtMS2Tore.Text + ")";
             string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
             MySqlConnection SQLMS1 = new MySqlConnection(cs);
             SQLMS1.Open();
             MySqlCommand cmd1 = new MySqlCommand(ins, SQLMS1);
-            MySqlDataReader reader1 = cmd1.ExecuteReader();
+            cmd1.ExecuteNonQuery();
+            SQLMS1.Close();
+            Load_Spiele();
         }
     }
     }
