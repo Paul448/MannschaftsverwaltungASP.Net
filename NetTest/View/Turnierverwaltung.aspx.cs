@@ -46,6 +46,7 @@ namespace NetTest.View
             {
 
             }
+            TabelleBerechen();
         }
 
         void Load_TN()
@@ -282,6 +283,41 @@ namespace NetTest.View
             cmd1.ExecuteNonQuery();
             SQLMS1.Close();
             Load_Spiele();
+        }
+
+        void TabelleBerechen()
+        {
+            string sel = @"use Mannschaftsverwaltung;
+            select T_NAME, MS1, sum(Tore) from((select T_NAME, MS1, sum(MS1_Tore) as Tore from Spiele
+            where T_NAME = '" + TurnierList.SelectedItem.Text + @"'
+            group by MS1)
+            union all
+            (select T_NAME, MS2, sum(MS2_Tore) from Spiele
+            where T_NAME = '" + TurnierList.SelectedItem.Text + @"' group by MS2)) as t3
+            Group by MS1";
+
+            string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
+            MySqlConnection SQLTAB = new MySqlConnection(cs);
+            SQLTAB.Open();
+            MySqlCommand cmd1 = new MySqlCommand(sel, SQLTAB);
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+
+
+            while (reader1.Read())
+            {
+                TC = new TableCell();
+                TR = new TableRow();
+                TC.Text = Convert.ToString(SPID);
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TC.Text = TNAME;
+                TR.Cells.Add(TC);
+                TC = new TableCell();
+                TurnierTabelle.Rows.Add(TR);
+
+            }
+            reader1.Close();
+            SQLTAB.Close();
         }
     }
     }

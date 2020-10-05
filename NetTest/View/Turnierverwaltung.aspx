@@ -17,4 +17,6 @@
     MS2 Tore<asp:TextBox ID="txtMS2Tore" runat="server"  TextMode="Number" Width="50px"></asp:TextBox> <br />
     <asp:Button ID="btn_SpielAdd" runat="server" Text="Erstellen" OnClick="btn_SpielAdd_Click" /> <br /> <br />
     <asp:Table ID="Spiele_Table" runat="server" BorderWidth="2" GridLines="Both" BorderStyle="Solid" Width="550px"></asp:Table>
+    <br />
+    <asp:Table ID="TurnierTabelle" runat="server"></asp:Table>
 </asp:Content>
