@@ -283,10 +283,12 @@ namespace NetTest.View
             cmd1.ExecuteNonQuery();
             SQLMS1.Close();
             Load_Spiele();
+            TabelleBerechen();
         }
 
         void TabelleBerechen()
         {
+            TurnierTabelle.Rows.Clear();
             string sel = @"use Mannschaftsverwaltung;
             select T_NAME, MS1, sum(Tore) from((select T_NAME, MS1, sum(MS1_Tore) as Tore from Spiele
             where T_NAME = '" + TurnierList.SelectedItem.Text + @"'
@@ -301,16 +303,22 @@ namespace NetTest.View
             SQLTAB.Open();
             MySqlCommand cmd1 = new MySqlCommand(sel, SQLTAB);
             MySqlDataReader reader1 = cmd1.ExecuteReader();
-
-
+            TableCell TC = new TableCell();
+            TableRow TR = new TableRow();
+            TC.Text = "Mannschaft:";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
+            TC.Text = "Tore im Turnier:";
+            TR.Cells.Add(TC);
+            TurnierTabelle.Rows.Add(TR);
             while (reader1.Read())
             {
                 TC = new TableCell();
                 TR = new TableRow();
-                TC.Text = Convert.ToString(SPID);
+                TC.Text = reader1.GetString(1);
                 TR.Cells.Add(TC);
                 TC = new TableCell();
-                TC.Text = TNAME;
+                TC.Text = reader1.GetString(2);
                 TR.Cells.Add(TC);
                 TC = new TableCell();
                 TurnierTabelle.Rows.Add(TR);

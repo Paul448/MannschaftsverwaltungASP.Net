@@ -18,5 +18,5 @@
     <asp:Button ID="btn_SpielAdd" runat="server" Text="Erstellen" OnClick="btn_SpielAdd_Click" /> <br /> <br />
     <asp:Table ID="Spiele_Table" runat="server" BorderWidth="2" GridLines="Both" BorderStyle="Solid" Width="550px"></asp:Table>
     <br />
-    <asp:Table ID="TurnierTabelle" runat="server"></asp:Table>
+    <asp:Table ID="TurnierTabelle" runat="server" BorderWidth="2" GridLines="Both" BorderStyle="Solid"></asp:Table>
 </asp:Content>
