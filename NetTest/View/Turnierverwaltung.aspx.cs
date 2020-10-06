@@ -296,36 +296,90 @@ namespace NetTest.View
             union all
             (select T_NAME, MS2, sum(MS2_Tore) from Spiele
             where T_NAME = '" + TurnierList.SelectedItem.Text + @"' group by MS2)) as t3
-            Group by MS1";
+            Group by MS1
+            order by sum(Tore) DESC";
 
+            string selGW = @"select
+            count(CASE
+            When MS1_Tore > MS2_Tore Then MS1
+            When MS1_Tore < MS2_Tore Then MS2
+            END),
+            CASE
+            When MS1_Tore > MS2_Tore Then MS1
+            When MS1_Tore < MS2_Tore Then MS2
+            END as Gewonnen
+            from Spiele SP1
+            where SP1.T_NAME = " + TurnierList.SelectedItem.Text + @"
+            Group by Gewonnen
+            Order by Gewonnen desc";
             string cs = "Server=95.111.235.48;Database=Mannschaftsverwaltung;Uid=Schule;Pwd=12345678;";
             MySqlConnection SQLTAB = new MySqlConnection(cs);
             SQLTAB.Open();
             MySqlCommand cmd1 = new MySqlCommand(sel, SQLTAB);
+            MySqlCommand cmd2 = new MySqlCommand(selGW, SQLTAB);
+            //string[,] GewonnenMS = new string[20, 2];
+            //MySqlDataReader DRGW = cmd2.ExecuteReader();
+            //int index = 0;
+            //while(DRGW.Read())
+            //{
+            //    GewonnenMS[index, 1] = DRGW.GetString(0);
+            //    GewonnenMS[index, 2] = DRGW.GetString(1);
+            //    index++;
+            //}
+            //DRGW.Close();
             MySqlDataReader reader1 = cmd1.ExecuteReader();
             TableCell TC = new TableCell();
             TableRow TR = new TableRow();
+            TC.Text = "";
+            TR.Cells.Add(TC);
+            TC = new TableCell();
             TC.Text = "Mannschaft:";
             TR.Cells.Add(TC);
             TC = new TableCell();
             TC.Text = "Tore im Turnier:";
             TR.Cells.Add(TC);
-            TurnierTabelle.Rows.Add(TR);
+            
+            //TC.Text = "Wins:";
+            //TR.Cells.Add(TC);
+            //TurnierTabelle.Rows.Add(TR);
+            int count = 1;
             while (reader1.Read())
             {
-                TC = new TableCell();
                 TR = new TableRow();
+                TC = new TableCell();
+                TC.Text = Convert.ToString(count) + ". ";
+                count++;
+                TR.Cells.Add(TC);
+                TC = new TableCell();
                 TC.Text = reader1.GetString(1);
                 TR.Cells.Add(TC);
                 TC = new TableCell();
                 TC.Text = reader1.GetString(2);
                 TR.Cells.Add(TC);
                 TC = new TableCell();
+                //var test = GewonnenMS[0,1].Where(c[:,1] == reader1.GetString(1));
+                //TC.Text = GewonnenMS[,1]
+                TR.Cells.Add(TC);
+                TC = new TableCell();
                 TurnierTabelle.Rows.Add(TR);
-
             }
             reader1.Close();
             SQLTAB.Close();
         }
+        // Mannschaft Gewonnen
+        /*use Mannschaftsverwaltung;
+        select
+        count(CASE
+        When MS1_Tore > MS2_Tore Then MS1
+        When MS1_Tore<MS2_Tore Then MS2
+        END),
+        CASE
+        When MS1_Tore > MS2_Tore Then MS1
+        When MS1_Tore<MS2_Tore Then MS2
+        END as Gewonnen
+        from Spiele SP1
+        where SP1.T_NAME = "2.Bundesliga"
+        Group by Gewonnen
+        Order by Gewonnen desc */
     }
     }
