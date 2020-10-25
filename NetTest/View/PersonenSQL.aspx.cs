@@ -26,7 +26,7 @@ namespace NetTest.View
                 MySqlConnection SQL_Laden = new MySqlConnection(ConnectionString);
                 SQL_Laden.Open();
                 String Select_Fussball = "select PS_NAME, PS_Vname, SP.MS_NAME, FPS_TORE, FPS_Siege, FPS_NR from FussballSP SP inner join PersonData PS on SP.PS_ID = PS.PS_ID";
-                String Select_Trainer = "select * from Trainer TR inner join PersonData PS on TR.PS_ID = PS.PS_ID";
+                //String Select_Trainer = "select * from Trainer TR inner join PersonData PS on TR.PS_ID = PS.PS_ID";
 
                 MySqlCommand SL_FSB = new MySqlCommand(Select_Fussball, SQL_Laden);
                 TableCell Cell = new TableCell();

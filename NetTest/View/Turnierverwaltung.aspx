@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Site.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Turnierverwaltung.aspx.cs" Inherits="NetTest.View.Turnierverwaltung" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Turnierverwaltung</h1>
-    <asp:Label ID="lblInfo" runat="server"></asp:Label> <br />
+    <asp:Label ID="lblInfo" runat="server"></asp:Label> 
     <h3>Turniere:</h3> 
     <asp:Button ID="Erstellen" runat="server" Text="Erstellen" />
     <asp:Button ID="Löschen" runat="server" Text="Löschen" /> <br /> <br />

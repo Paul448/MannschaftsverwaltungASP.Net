@@ -338,10 +338,10 @@ namespace NetTest.View
             TC = new TableCell();
             TC.Text = "Tore im Turnier:";
             TR.Cells.Add(TC);
-            
-            //TC.Text = "Wins:";
-            //TR.Cells.Add(TC);
-            //TurnierTabelle.Rows.Add(TR);
+            TC = new TableCell();
+            TC.Text = "Wins:";
+            TR.Cells.Add(TC);
+            TurnierTabelle.Rows.Add(TR);
             int count = 1;
             while (reader1.Read())
             {
